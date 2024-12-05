@@ -9,4 +9,8 @@ def puzzleA(data):
     return sum(distanceList)
 
 def puzzleB(data):
-    return Exception("Not implemented")
+    lines = data.split("\n")
+    lines = [list(map(int, line.split('   '))) for line in lines]
+    listA, listB = zip(*lines)
+    counts = [listB.count(item) for item in listA]
+    return sum([a * b for a, b in zip(listA, counts)])
