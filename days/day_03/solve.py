@@ -11,9 +11,8 @@ def puzzleB(data):
     data = 'do()' + data + 'don\'t()'
 
     do_regex = r"do\(\)(.*?)don't\(\)"
-
     dos = re.findall(do_regex, data)
-    print(dos)
+
     regex = r"mul\((\d{1,3}),(\d{1,3})\)"
 
     summed = 0
@@ -22,8 +21,3 @@ def puzzleB(data):
         summed += sum(multiplications)
 
     return summed
-
-    mult_tupls = [re.findall(regex, do) for do in dos]
-    flatten = [item for sublist in mult_tupls for item in sublist]
-    multiplications = [int(a) * int(b) for a, b in flatten]
-    return sum(multiplications)
