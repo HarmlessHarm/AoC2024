@@ -8,6 +8,7 @@ def read_input(file_path):
     try:
         with open(os.path.join(day_dir, file_path), 'r') as file:
             return file.read().strip()
+
     except FileNotFoundError:
         print(f"Input file at {file_path} not found.")
         return None

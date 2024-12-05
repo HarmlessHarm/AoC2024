@@ -1,25 +1,24 @@
 from utils.helpers import read_input
 from .solve import puzzleA, puzzleB
 
+def test(file, solution):
+    puzzle = file.split('/')[-1].split('.')[0]
+    test_data = read_input(file)
+    test_result = puzzleA(test_data)
 
-def test_puzzleA():
-    testA_data = read_input('inputs/testA.txt')
-    testA_sol = None
-    testA_result = puzzleA(testA_data)
-    print(testA_data, end="\n\n")
-    print(f"{testA_sol} == {testA_result}")
+    print("================================")
+    print(puzzle, end="\n\n")
+    print("input:")
+    print(test_data, end="\n\n")
+
+    print("assert:")
+    print(f"{solution} == {test_result}")
+    print("================================")
     
-    assert testA_result == testA_sol, f"{testA_sol} != {testA_result}"
+    assert test_result == solution, f"{puzzle}: {test_result} != {solution}"
+
+def test_puzzleA(solution):
+    test('inputs/testA.txt', solution)
 
 def test_puzzleB():
-    testB_data = read_input('inputs/testB.txt')
-    testB_sol = None
-    testB_result = puzzleB(testB_data)
-    print(testB_data, end="\n\n")
-    print(f"{testB_sol} == {testB_result}")
-    
-    assert testB_result == testB_sol, f"{testB_sol} != {testB_result}"
-
-def run_tests():
-    test_puzzleA()
-    test_puzzleB()
+    test('inputs/testB.txt')
