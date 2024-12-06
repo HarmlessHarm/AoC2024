@@ -1,9 +1,12 @@
 from utils.helpers import read_input
 from .solve import puzzleA, puzzleB
-
+import json
 def test(puzzle, file, solution = None):
     test_name = file.split('/')[-1].split('.')[0]
     test_data = read_input(file)
+    if test_data == "":
+        file = file.replace("B", "A")
+        test_data = read_input(file)
     test_result = puzzle(test_data)
 
     print("================================")
